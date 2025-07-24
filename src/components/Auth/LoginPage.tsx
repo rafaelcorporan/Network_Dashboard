@@ -214,7 +214,7 @@ const LoginPage: React.FC = () => {
 
             {/* Demo User Cards */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-slate-200">Demo User Accounts</h3>
+              <h3 className="text-lg font-semibold text-slate-200">User Accounts</h3>
               <div className="grid gap-3">
                 {demoUsers.map((demo) => {
                   const Icon = demo.icon
