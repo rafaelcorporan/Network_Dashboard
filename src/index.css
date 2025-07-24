@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-neutral-900 text-neutral-100;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20 hover:-translate-y-1;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+  
+  .status-indicator {
+    @apply w-3 h-3 rounded-full animate-pulse;
+  }
+  
+  .status-online {
+    @apply bg-success-500 shadow-glow-green;
+  }
+  
+  .status-warning {
+    @apply bg-warning-500 shadow-glow-yellow;
+  }
+  
+  .status-offline {
+    @apply bg-error-500 shadow-glow-red;
+  }
+  
+  .metric-card {
+    @apply bg-neutral-800/50 backdrop-blur-sm rounded-xl p-6 border border-neutral-700/50 hover:border-neutral-600/50 transition-all duration-300;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md rounded-xl border border-white/10 shadow-xl;
+  }
+  
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-neutral-300 hover:text-white hover:bg-neutral-700/50 transition-all duration-200;
+  }
+  
+  .nav-link.active {
+    @apply text-white bg-primary-600/20 border-l-4 border-primary-500;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 font-medium;
+  }
+  
+  .btn-secondary {
+    @apply bg-neutral-700 hover:bg-neutral-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 font-medium;
+  }
+  
+  .status-online {
+    @apply text-green-400 bg-green-400/20;
+  }
+  
+  .status-warning {
+    @apply text-yellow-400 bg-yellow-400/20;
+  }
+  
+  .status-offline {
+    @apply text-red-400 bg-red-400/20;
+  }
+  
+  .status-unknown {
+    @apply text-gray-400 bg-gray-400/20;
+  }
+
+  /* Enhanced Loading Animation Styles */
+  .loading-container {
+    @apply fixed inset-0 flex items-center justify-center;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  }
+  
+  .loading-spinner {
+    @apply relative flex items-center justify-center;
+    will-change: transform, opacity;
+  }
+  
+  .loading-spinner svg {
+    will-change: transform;
+  }
+  
+  .loading-spinner circle,
+  .loading-spinner path,
+  .loading-spinner line {
+    will-change: transform, opacity, stroke-dasharray, stroke-dashoffset;
+  }
+  
+  /* GPU Acceleration for animations */
+  .animate-spin,
+  .animate-pulse,
+  .animate-bounce {
+    will-change: transform;
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .loading-spinner svg {
+      animation: none !important;
+    }
+    
+    .loading-spinner circle,
+    .loading-spinner path,
+    .loading-spinner line {
+      animation: none !important;
+    }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Enhanced glassmorphism effects */
+  .glass-effect {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-800;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-600 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-500;
+  }
+  
+  /* Loading animation keyframes */
+  @keyframes quantum-pulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  
+  @keyframes neural-connect {
+    0% { stroke-dasharray: 0, 100; opacity: 0.2; }
+    50% { stroke-dasharray: 50, 50; opacity: 0.8; }
+    100% { stroke-dasharray: 100, 0; opacity: 0.2; }
+  }
+  
+  @keyframes morph-shape {
+    0% { d: path("M60,20 L100,60 L60,100 L20,60 Z"); }
+    25% { d: path("M60,20 Q100,20 100,60 Q100,100 60,100 Q20,100 20,60 Q20,20 60,20 Z"); }
+    50% { d: path("M20,40 L100,40 L100,80 L20,80 Z"); }
+    75% { d: path("M60,20 Q100,20 100,60 Q100,100 60,100 Q20,100 20,60 Q20,20 60,20 Z"); }
+    100% { d: path("M60,20 L100,60 L60,100 L20,60 Z"); }
+  }
+  
+  /* Center loading content */
+  .loading-center {
+    @apply min-h-screen flex items-center justify-center;
+  }
+  
+  .loading-center-page {
+    @apply min-h-[400px] flex items-center justify-center;
+  }
+}
+
+/* Custom CSS Variables for theming */
+:root {
+  --primary-loader-color: #3b82f6;
+  --secondary-loader-color: #8b5cf6;
+  --success-loader-color: #10b981;
+  --warning-loader-color: #f59e0b;
+  --error-loader-color: #ef4444;
+  --neutral-loader-color: #6b7280;
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-loader-color: #60a5fa;
+    --secondary-loader-color: #a78bfa;
+    --success-loader-color: #34d399;
+    --warning-loader-color: #fbbf24;
+    --error-loader-color: #f87171;
+    --neutral-loader-color: #9ca3af;
+  }
+}
+
+/* Network topology styles */
+.cy-container {
+  @apply w-full h-full bg-neutral-900 rounded-lg border border-neutral-700;
+}
+
+/* Chart container styles */
+.chart-container {
+  @apply relative w-full h-full;
+}
+
+/* Alert styles */
+.alert-critical {
+  @apply bg-error-500/10 border-error-500/30 text-error-400;
+}
+
+.alert-warning {
+  @apply bg-warning-500/10 border-warning-500/30 text-warning-400;
+}
+
+.alert-info {
+  @apply bg-primary-500/10 border-primary-500/30 text-primary-400;
+}
+
+.alert-success {
+  @apply bg-success-500/10 border-success-500/30 text-success-400;
+}
